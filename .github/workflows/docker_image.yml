@@ -21,7 +21,7 @@ jobs:
       run:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag codemog/special_districts_api
+      run: docker build . --file Dockerfile --tag codemog/special_districts_api_2
       
     - name: Docker Push
-      run: docker push codemog/special_districts_api
+      run: docker push codemog/special_districts_api_2
