@@ -2,7 +2,6 @@
 
 var pg = require('pg');
 
-
 var appRouter = function(app) {
 
      app.get("/districtstest", function(req, res) {
@@ -34,7 +33,7 @@ var appRouter = function(app) {
         }
 
 
-        var filter = req.query.filter || '0'; //comma delimited list of lgtypeid's, if '0' then all
+     var filter = req.query.filter || '0'; //comma delimited list of lgtypeid's, if '0' then all
 
         if (filter !== '0') {
             filterarray = filter.split(",");
