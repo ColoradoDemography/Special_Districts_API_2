@@ -8,6 +8,6 @@ ADD . .
 # If you need npm, don't use a base tag
 RUN apk add --update bash && npm install
 
-EXPOSE 4006
+EXPOSE 4005
 
 CMD ["node", "app.js"]
