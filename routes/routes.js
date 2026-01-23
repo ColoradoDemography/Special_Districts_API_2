@@ -191,13 +191,12 @@ var appRouter = function(app) {
             //var conString = "postgres://codemog:demography@34.55.5.64:5432/dola";  //this is a read only account, have fun!
             const instanceConnectionName = 'dola-gis-server:us-central1:free-trial-first-project'
 
-            const client = new Client({
-                 connectionString: "postgres://codemog:demography@34.55.5.64:5432/dola"
-                 //user: 'codemog',
-                 //password: 'demography',
-                 //database: 'dola',
-                 // Use the Unix socket path provided by the proxy
-                 //host: `/cloudsql/${instanceConnectionName}`,
+            const client = new Pool({
+                 user: 'codemog',
+                 password: 'demography',
+                 database: 'dola',
+                 host: `34.55.5.64`,
+                 port: 5432
                })
                  
   
