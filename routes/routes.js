@@ -217,12 +217,12 @@ var appRouter = function(app) {
                const client = new pg.Pool(pgConfig);
                  
   
-            //client.connect(function(err) {
+            client.connect(function(err) {
                 if (err) {
                     return console.error('could not connect to postgres', err);
                 }
 
-                //client.query(sqlstring, function(err, result) {
+                client.query(sqlstring, function(err, result) {
                     if (err) {
                         return console.error('error running query', err);
                     }
