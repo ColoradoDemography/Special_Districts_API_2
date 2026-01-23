@@ -192,11 +192,12 @@ var appRouter = function(app) {
             const instanceConnectionName = 'dola-gis-server:us-central1:free-trial-first-project'
 
             const client = new Client({
-                 user: 'codemog',
-                 password: 'demography',
-                 database: 'dola',
+                 connectionString: "postgres://codemog:demography@34.55.5.64:5432/dola"
+                 //user: 'codemog',
+                 //password: 'demography',
+                 //database: 'dola',
                  // Use the Unix socket path provided by the proxy
-                 host: `/cloudsql/${instanceConnectionName}`,
+                 //host: `/cloudsql/${instanceConnectionName}`,
                })
                  
   
