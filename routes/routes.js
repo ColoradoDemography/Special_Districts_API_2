@@ -1,7 +1,7 @@
 "use strict";
 
 //var pg = require('pg');
-     import { Connector } from '@google/cloud-sql-connector';
+     import { Connector } from '@google-cloud/cloud-sql-connector';
      import pg from 'pg';
 
 var appRouter = function(app) {
