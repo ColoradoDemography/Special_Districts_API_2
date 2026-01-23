@@ -198,9 +198,9 @@ var appRouter = function(app) {
              const client = new Client({
                   user: 'codemog',
                   password: 'demography',
-                  //host: '/cloudsql/dola-gis-server:us-central1:free-trial-first-project',
-                  host: '34.55.5.64',
-                  port: 5432,
+                  host: '/cloudsql/dola-gis-server:us-central1:free-trial-first-project',
+                  //host: '34.55.5.64',
+                 // port: 5432,
                   database: 'dola',
              })
                //const {Pool} = 'pg';
