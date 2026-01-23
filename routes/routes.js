@@ -192,7 +192,7 @@ var appRouter = function(app) {
 
         function sendtodatabase(sqlstring) {
 
-            var conString = "socket://postgres:codemog:demographydola-gis-server:us-central1:free-trial-first-project?db=dola";  //this is a read only account, have fun!
+            var conString = "postgres://dola-gis-server:us-central1:free-trial-first-project:codemog:demography@34.55.5.64:5432/dola";  //this is a read only account, have fun!
            var client = new pg.Client(conString);
                //const {Pool} = 'pg';
                //const connector = new Connector();
