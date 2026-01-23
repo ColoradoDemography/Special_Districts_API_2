@@ -1,6 +1,6 @@
 "use strict";
 
-const { Client } = require('pg');
+const { Pool } = require('pg');
 
 var appRouter = function(app) {
 
