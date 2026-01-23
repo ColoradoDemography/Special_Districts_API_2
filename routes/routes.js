@@ -1,11 +1,12 @@
 "use strict";
 
-//const { Pool } = require('pg');
+//var pg = require('pg');
+     import { Connector } from '@google/cloud-sql-connector';
+     import pg from 'pg';
 
 var appRouter = function(app) {
 
-     import { Connector } from '@google/cloud-sql-connector';
-     import pg from 'pg';
+
 
      app.get("/districts", function(req, res) {
 
