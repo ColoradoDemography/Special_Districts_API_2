@@ -1,6 +1,6 @@
 "use strict";
 
-const { Pool } = require('pg');
+//const { Pool } = require('pg');
 
 var appRouter = function(app) {
 
@@ -189,15 +189,29 @@ var appRouter = function(app) {
         function sendtodatabase(sqlstring) {
 
             //var conString = "postgres://codemog:demography@34.55.5.64:5432/dola";  //this is a read only account, have fun!
-            const instanceConnectionName = 'dola-gis-server:us-central1:free-trial-first-project'
-
-            const client = new Pool({
-                 user: 'codemog',
-                 password: 'demography',
-                 database: 'dola',
-                 host: `34.55.5.64`,
-                 port: 5432
-               })
+            import { Connector } from '@google/cloud-sql-connector';
+               import pg from 'pg';
+               
+               const connector = new Connector();
+               
+               // Replace with your instance connection name (e.g., 'my-project:my-region:my-instance')
+               const instanceConnectionName = 'dola-gis-server:us-central1:free-trial-first-project'; 
+               
+               // Create a connection configuration for the pg driver
+               const clientOpts = await connector.get horrendous({
+                 instanceConnectionName,
+                 ipType: 'public', // use 'public' or 'private'
+               });
+               
+               // Configure the database connection parameters
+               const pgConfig = {
+                 user: 'codemog',      // e.g., 'postgres' or 'my-iam-user@example.com'
+                 password: 'demography',  // e.g., 'mypassword'
+                 database: 'dola',  // e.g., 'mydatabase'
+                 ...clientOpts,
+               };
+               
+               const client = new pg.Pool(pgConfig);
                  
   
             client.connect(function(err) {
