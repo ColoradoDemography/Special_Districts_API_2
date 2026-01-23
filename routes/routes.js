@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 
 //var pg = require('pg');
      import { Connector } from '@google-cloud/cloud-sql-connector';
@@ -194,27 +194,28 @@ var appRouter = function(app) {
 
             //var conString = "postgres://codemog:demography@34.55.5.64:5432/dola";  //this is a read only account, have fun!
            
-               
+               const {Pool} = 'pg';
                const connector = new Connector();
                
                // Replace with your instance connection name (e.g., 'my-project:my-region:my-instance')
-               const instanceConnectionName = 'dola-gis-server:us-central1:free-trial-first-project'; 
+              // const instanceConnectionName = 'dola-gis-server:us-central1:free-trial-first-project'; 
                
                // Create a connection configuration for the pg driver
-               const clientOpts = connector.get({
-                 instanceConnectionName,
+               const clientOpts = connector.getOptions({
+                 instanceConnectionName: 'dola-gis-server:us-central1:free-trial-first-project',
                  ipType: 'public', // use 'public' or 'private'
                });
                
                // Configure the database connection parameters
-               const pgConfig = {
+               const client = new Pool({
                  user: 'codemog',      // e.g., 'postgres' or 'my-iam-user@example.com'
                  password: 'demography',  // e.g., 'mypassword'
                  database: 'dola',  // e.g., 'mydatabase'
                  ...clientOpts,
-               };
+                 max: 5,
+               });
                
-               const client = new pg.Pool(pgConfig);
+               //const client = new pg.Pool(pgConfig);
                  
   
             client.connect(function(err) {
@@ -264,6 +265,7 @@ var appRouter = function(app) {
                     res.send(arroutput);
 
                     client.end();
+                    connector.close();
 
                 });
             });
