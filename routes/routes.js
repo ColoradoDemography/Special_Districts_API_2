@@ -4,7 +4,7 @@ var pg = require('pg');
 
 var appRouter = function(app) {
 
-     app.get("/districtstest", function(req, res) {
+     app.get("/districts", function(req, res) {
 
         var db = 'dola';
         var schema = 'bounds';
