@@ -1,6 +1,6 @@
 //"use strict";
 
-var pg = require('pg');
+const { Client } = require('pg');
      //import { Connector } from '@google-cloud/cloud-sql-connector';
      //import pg from 'pg';
 
@@ -195,7 +195,7 @@ var appRouter = function(app) {
             //var conString = "postgres://dola-gis-server:us-central1:free-trial-first-project:codemog:demography@34.55.5.64:5432/dola";  //this is a read only account, have fun!
           // var client = new pg.Client(conString);
              
-             client = new pg.Client({
+             const client = new Client({
                   user: 'codemog',
                   password: 'demography',
                   //host: '/cloudsql/dola-gis-server:us-central1:free-trial-first-project',
