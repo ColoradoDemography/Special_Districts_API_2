@@ -194,8 +194,8 @@ var appRouter = function(app) {
 
             //var conString = "postgres://dola-gis-server:us-central1:free-trial-first-project:codemog:demography@34.55.5.64:5432/dola";  //this is a read only account, have fun!
           // var client = new pg.Client(conString);
-             const Client = pg;
-             client = new Client({
+             
+             client = new pg.Client({
                   user: 'codemog',
                   password: 'demography',
                   host: '/cloudsql/dola-gis-server:us-central1:free-trial-first-project',
