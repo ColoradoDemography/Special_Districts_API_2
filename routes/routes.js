@@ -201,7 +201,7 @@ var appRouter = function(app) {
                const instanceConnectionName = 'dola-gis-server:us-central1:free-trial-first-project'; 
                
                // Create a connection configuration for the pg driver
-               const clientOpts = await connector.get horrendous({
+               const clientOpts = connector.get({
                  instanceConnectionName,
                  ipType: 'public', // use 'public' or 'private'
                });
