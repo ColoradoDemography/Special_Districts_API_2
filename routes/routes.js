@@ -4,6 +4,9 @@
 
 var appRouter = function(app) {
 
+     import { Connector } from '@google/cloud-sql-connector';
+     import pg from 'pg';
+
      app.get("/districts", function(req, res) {
 
         var db = 'dola';
@@ -189,8 +192,7 @@ var appRouter = function(app) {
         function sendtodatabase(sqlstring) {
 
             //var conString = "postgres://codemog:demography@34.55.5.64:5432/dola";  //this is a read only account, have fun!
-            import { Connector } from '@google/cloud-sql-connector';
-               import pg from 'pg';
+           
                
                const connector = new Connector();
                
@@ -198,7 +200,7 @@ var appRouter = function(app) {
                const instanceConnectionName = 'dola-gis-server:us-central1:free-trial-first-project'; 
                
                // Create a connection configuration for the pg driver
-               const clientOpts = await connector.get({
+               const clientOpts = await connector.get horrendous({
                  instanceConnectionName,
                  ipType: 'public', // use 'public' or 'private'
                });
