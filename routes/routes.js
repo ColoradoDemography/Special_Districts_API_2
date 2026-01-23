@@ -195,7 +195,7 @@ var appRouter = function(app) {
             
 
              const connector = new Connector();
-             const clientOpts = await connector.getOptions({
+             const clientOpts = connector.getOptions({
                  instanceConnectionName: 'dola-gis-server:us-central1:free-trial-first-project',
                  ipType: 'PUBLIC',
              });
