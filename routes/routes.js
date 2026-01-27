@@ -1,8 +1,31 @@
 //"use strict";
 
-const { Client } = require('pg');
-     //import { Connector } from '@google-cloud/cloud-sql-connector';
+var pg = require('pg');
+    // import { Connector } from '@google-cloud/cloud-sql-connector';
      //import pg from 'pg';
+    // const {Pool} = 'pg';
+               //const connector = new Connector();
+               
+               // Replace with your instance connection name (e.g., 'my-project:my-region:my-instance')
+              // const instanceConnectionName = 'dola-gis-server:us-central1:free-trial-first-project'; 
+               
+               // Create a connection configuration for the pg driver
+               //const clientOpts = await connector.getOptions({
+                // instanceConnectionName: 'dola-gis-server:us-central1:free-trial-first-project',
+                 //authType: 'IAM'
+                    //ipType: 'public', // use 'public' or 'private'
+              // });
+               
+               // Configure the database connection parameters
+              // const client = new Pool({
+                 //user: 'codemog',      // e.g., 'postgres' or 'my-iam-user@example.com'
+                 //password: 'demography',  // e.g., 'mypassword'
+                 //database: 'dola',  // e.g., 'mydatabase'
+                 //...clientOpts,
+                // max: 5,
+             //  });
+               
+               //const client = new pg.Pool(pgConfig);
 
 var appRouter = function(app) {
 
@@ -192,39 +215,18 @@ var appRouter = function(app) {
 
         function sendtodatabase(sqlstring) {
 
-            //var conString = "postgres://dola-gis-server:us-central1:free-trial-first-project:codemog:demography@34.55.5.64:5432/dola";  //this is a read only account, have fun!
-          // var client = new pg.Client(conString);
+            var conString = "postgres://codemog:demography@34.55.5.64:5432/dola";  //this is a read only account, have fun!
+          var client = new pg.Client(conString);
              
-             const client = new Client({
-                  user: 'codemog',
-                  password: 'demography',
-                  host: '/cloudsql/dola-gis-server:us-central1:free-trial-first-project',
+            // const client = new Client({
+                 // user: 'codemog',
+                 // password: 'demography',
+                  //host: '/cloudsql/dola-gis-server:us-central1:free-trial-first-project',
                   //host: '34.55.5.64',
                  // port: 5432,
-                  database: 'dola',
-             })
-               //const {Pool} = 'pg';
-               //const connector = new Connector();
+                 // database: 'dola',
+            // })
                
-               // Replace with your instance connection name (e.g., 'my-project:my-region:my-instance')
-              // const instanceConnectionName = 'dola-gis-server:us-central1:free-trial-first-project'; 
-               
-               // Create a connection configuration for the pg driver
-               //const clientOpts = connector.getOptions({
-                 //instanceConnectionName: 'dola-gis-server:us-central1:free-trial-first-project',
-                 //ipType: 'public', // use 'public' or 'private'
-               //});
-               
-               // Configure the database connection parameters
-              // const client = new Pool({
-                 //user: 'codemog',      // e.g., 'postgres' or 'my-iam-user@example.com'
-                 //password: 'demography',  // e.g., 'mypassword'
-                 //database: 'dola',  // e.g., 'mydatabase'
-                 //...clientOpts,
-                // max: 5,
-             //  });
-               
-               //const client = new pg.Pool(pgConfig);
                  
   
             client.connect(function(err) {
