@@ -214,8 +214,7 @@ var appRouter = function(app) {
         sendtodatabase(sql);
 
         function sendtodatabase(sqlstring) {
-            console.log(sqlstring);
-            console.log("function");
+            
             var conString = "postgres://codemog:demography@34.55.5.64:5432/dola";  //this is a read only account, have fun!
           var client = new pg.Client(conString);
              
@@ -239,6 +238,9 @@ var appRouter = function(app) {
                     if (err) {
                         return console.error('error running query', err);
                     }
+
+                    console.log(sqlstring);
+            console.log("function");
 
                     var resultdata = result.rows;
                     var output = '';
