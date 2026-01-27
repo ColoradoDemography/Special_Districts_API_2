@@ -210,11 +210,12 @@ var appRouter = function(app) {
             sql = "SELECT lgid, lastupdate, lgname, lgtypeid, lgstatusid, source, mail_address, alt_address, mail_city, mail_state, mail_zip, url, prev_name, abbrev_name, st_asgeojson(st_transform(ST_Simplify(geom," + tolerance + "),4326)) AS geojson from " + schema + "." + tname + " natural join " + schema + ".lgbasic where " + bbstr + activestr + ctfstr + filterstr + " limit " + limit + ";";
         }
 
-          console.log(sql);
+          
         sendtodatabase(sql);
 
         function sendtodatabase(sqlstring) {
-
+            console.log(sqlstring);
+            console.log("function");
             var conString = "postgres://codemog:demography@34.55.5.64:5432/dola";  //this is a read only account, have fun!
           var client = new pg.Client(conString);
              
