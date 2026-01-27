@@ -276,7 +276,7 @@ var appRouter = function(app) {
                     res.send(arroutput);
 
                     client.end();
-                    connector.close();
+                    
 
                 });
             });
