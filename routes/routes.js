@@ -206,9 +206,9 @@ var appRouter = function(app) {
 
         if (req.query.lgid) {
             //sql = "SELECT lgid, lastupdate, lgname, lgtypeid, lgstatusid, source, mail_address, alt_address, mail_city, mail_state, mail_zip, url, prev_name, abbrev_name, st_asgeojson(st_transform(ST_Simplify(geom," + tolerance + "),4326)) AS geojson from " + schema + "." + tname + " natural join " + schema + ".lgbasic " + lgidstr + ";";
-             sql = "SELECT lgid, source, lastupdate, st_asgeojson(st_transform(ST_Simplify(geom," + tolerance + "),4326)) AS geojson from " + schema + "." + tname + ";";
+             sql = "SELECT bounds.districts.lgid, lastupdate, lgname, lgtypeid, lgstatusid, source,  mail_address, alt_address, mail_city, mail_state, mail_zip, url, prev_name, abbrev_name, st_asgeojson(st_transform(ST_Simplify(geom," + tolerance + "),4326)) AS geojson from bounds.districts full join bounds.lgbasic ON bounds.districts.lgid = bounds.lgbasic.lgid where bounds.districts.lgid = " + lgidstr + ";";
         } else {
-            sql = "SELECT lgid, lastupdate, lgname, lgtypeid, lgstatusid, source, mail_address, alt_address, mail_city, mail_state, mail_zip, url, prev_name, abbrev_name, st_asgeojson(st_transform(ST_Simplify(geom," + tolerance + "),4326)) AS geojson from " + schema + "." + tname + " natural join " + schema + ".lgbasic where " + bbstr + activestr + ctfstr + filterstr + " limit " + limit + ";";
+            sql = "SELECT bounds.districts.lgid, lastupdate, lgname, lgtypeid, lgstatusid, source, mail_address, alt_address, mail_city, mail_state, mail_zip, url, prev_name, abbrev_name, st_asgeojson(st_transform(ST_Simplify(geom," + tolerance + "),4326)) AS geojson from bounds.districts full join bounds.lgbasic ON bounds.districts.lgid = bounds.lgbasic.lgid where " + bbstr + activestr + ctfstr + filterstr + " limit " + limit + ";";
         }
 
           
